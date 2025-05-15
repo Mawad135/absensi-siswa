@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('gurus', function (Blueprint $table) {
             $table->id();
-            $table->string('nama',30);
-            $table->string('nip',20);
-            $table->string('no_hp',13)->nullable();
-            $table->enum('jk',['L','P']);
-            $table->string('tanggal_lahir',30);
-            $table->string('username',30);
-            $table->string('password',30);
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('nama', 30);
+            $table->string('nip', 20);
+            $table->string('no_hp', 13);
+            $table->enum('jk', ['L', 'P']);
+            $table->string('tanggal_lahir', 30);
+            $table->string('username', 30);
+            $table->string('password');
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

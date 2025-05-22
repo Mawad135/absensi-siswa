@@ -145,6 +145,6 @@ class GuruController extends Controller
 
         // Hapus guru
         $guru->delete();
-        return redirect(route('guru.index'));
+        return redirect(route('guru.index'))->with('success', 'Guru berhasil dihapus!');
     }
 }

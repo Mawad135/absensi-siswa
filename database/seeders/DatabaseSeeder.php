@@ -21,20 +21,6 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123'),
             'level' => 'admin',
         ]);
-
-        DB::table('users')->insert([
-            'name' => 'guru',
-            'username' => 'guru',
-            'password' => Hash::make('123'),
-            'level' => 'guru',
-        ]);
-
-        DB::table('users')->insert([
-            'name' => 'siswa',
-            'username' => 'siswa',
-            'password' => Hash::make('123'),
-            'level' => 'siswa',
-        ]);
     }
 
 }

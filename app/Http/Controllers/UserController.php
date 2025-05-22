@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -106,6 +105,6 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect(route('user.index'));
+        return redirect(route('user.index'))->with('success', 'User berhasil dihapus!');
     }
 }

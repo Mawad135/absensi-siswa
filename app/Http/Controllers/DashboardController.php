@@ -6,6 +6,7 @@ use App\Models\guru;
 use App\Models\local;
 use App\Models\siswa;
 use App\Models\jurusan;
+use App\Models\absensi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,9 +52,18 @@ class DashboardController extends Controller
     // Ambil data siswa berdasarkan user yang sedang login
     $siswa = siswa::where('user_id', Auth::id())->first();
 
+    // Ambil data absensi siswa ini
+    $rekapAbsensi = [];
+    if ($siswa) {
+        $rekapAbsensi = absensi::where('siswa_id', $siswa->id)
+            ->orderBy('tanggal_absen', 'desc')
+            ->get();
+    }
+
     return view('siswa.dashboard', [
         'menu' => 'dashboard',
-        'siswa' => $siswa
+        'siswa' => $siswa,
+        'rekapAbsensi' => $rekapAbsensi
     ]);
 }
     

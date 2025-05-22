@@ -162,6 +162,6 @@ class LocalController extends Controller
     {
         $local = local::find($id);
         $local->delete();
-        return redirect(route('local.index'));
+        return redirect(route('local.index'))->with('success', 'Kelas berhasil dihapus!');
     }
 }

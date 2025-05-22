@@ -171,8 +171,8 @@ class siswacontroller extends Controller
      */
     public function destroy($id)
     {
-        $siswa = siswa::find($id);
-        $siswa->delete();
-        return redirect(route('siswa.index'));
-    }
+    $siswa = siswa::find($id);
+    $siswa->delete();
+    return redirect(route('siswa.index'))->with('success', 'Siswa berhasil dihapus!');
+}
 }

@@ -20,6 +20,13 @@
       <span>Absensi</span>
     </a>
   </li>
+
+  <li class="nav-item">
+    <a class="nav-link {{ $menu == 'laporan' ? '' : 'collapsed' }}" href="{{ route('laporan.guru') }}">
+    <i class="fas fa-file-alt"></i>
+      <span>Laporan</span>
+    </a>
+  </li>
 </ul>
         </aside>
       </div>

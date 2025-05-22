@@ -40,6 +40,15 @@ public function store(Request $request)
     // Ambil data siswa berdasarkan username yang login
     $siswa = Siswa::where('username', Auth::user()->username)->firstOrFail();
 
+     // Cek apakah sudah absen hari ini
+    $sudahAbsen = Absensi::where('siswa_id', $siswa->id)
+        ->whereDate('tanggal_absen', now()->toDateString())
+        ->exists();
+
+    if ($sudahAbsen) {
+        return redirect()->route('absen.index')->with('error', 'Anda sudah melakukan absen hari ini!');
+    }
+    
     // Validasi file foto
     $request->validate([
         'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
